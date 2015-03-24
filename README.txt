@@ -6,6 +6,7 @@ Fonctionnalités:
 	* Expressions =>
 		- multiplication, addition, division, difference entre entiers
 		- operations et/ou entre booleens ou expressions booleennes
+		- comparaisons (=, <, >, <=, >=, !=) entre entiers
 	* Instructions =>
 		- programme <nomProg> { ... }
 		- ecrire <idf> : affiche la valeur en memoire de <idf> avec un retour charriot

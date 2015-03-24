@@ -6,12 +6,9 @@ programme Test1 {
 	a := 4 ;
 	b := 5 ;
 	si ( a > b ) alors {
-		entier x ;
-		x := a + b ;
-		ecrire x ;
-	} sinon {
-		booleen z ;
 		ecrire a ;
+	} sinon {
+		ecrire b ;
 	} finsi ;
 
 	c := 10 ;
@@ -21,12 +18,8 @@ programme Test1 {
 
 		e := ( c * d + 10 ) / 11 ;
 		si  ( ( e >= c ) et ( ( e - 1 + 1 ) = d ) ) alors {
-			entier w ;
-
 			ecrire d ;
 		} sinon {
-			entier u ;
-
 			ecrire a ;
 		} finsi ;
 	} finsi ;

@@ -57,9 +57,19 @@ public class AnalyseurSyntaxique {
 		 * Debut du bloc
 		*/
 		this.check(Lexique.DEBUT_BLOC);
-		do {
+		/**
+		 * Il est contraignant de devoir refaire des declarations
+		 * dans les blocs conditionnels ou iteratifs par exemple.
+		 * Pour l'instant, on choisit donc d'autoriser l'absence
+		 * de déclartion.
+		 *
+		 * Attention !
+		 * Les déclarations doivent toujours se faire avant toute
+		 * instruction, sinon une erreur syntaxique sera levée
+		*/
+		while(this.estUnType(this.unite)) {
 			this.analyseDeclaration();
-		} while(this.estUnType(this.unite));
+		}
 		do {
 			blk.add(this.analyseInstruction());
 		} while(!this.unite.equals(Lexique.FIN_BLOC));

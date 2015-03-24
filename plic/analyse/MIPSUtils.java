@@ -47,11 +47,9 @@ public class MIPSUtils extends ASMUtils {
 
 	@Override
 	public String genererCondition(Expression e, Bloc then, Bloc othw) {
-		String expr = e.generer();
-
 		int id = etiquetteId++;
 
-		StringBuffer condition = new StringBuffer(expr);
+		StringBuffer condition = new StringBuffer(e.generer());
 		condition.append("\n\tbne $v0, 1, ELSE" + id + "\n");
 		condition.append(then.generer());
 		condition.append("\n\tj ENDIF" + id);
@@ -63,6 +61,11 @@ public class MIPSUtils extends ASMUtils {
 		return condition.toString();
 	}
 
+	/**
+	 * C'est le meme principe partout:
+	 * l'operande gauche est dans $t2, la droite dans $v0.
+	 * Apres l'instruction, $v0 = $t2 op $v0
+	*/
 	@Override
 	public String genererEt() {
 		return "\tand $v0, $t2, $v0\n";
