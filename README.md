@@ -57,51 +57,13 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 
 	- ######Condition
 		```
-		entier a ;
-		a := 5 ;
-
-		#
-		# si Expression alors Bloc sinon Bloc |
-		# si Expression alors Bloc
-		#
-
-		si ( a * 2 ) = 10
-			alors {
-				ecrire a * 2 ;
-			} sinon {
-				ecrire a ;
-			}
+			| si Expression alors Bloc sinon Bloc | si Expression alors Bloc |
 		```
 
 	- ######Iteration
-		- ######tantque
-			```
-			entier i ;
-			i := 1 ;
-
-			#
-			# tantque Expression repeter Bloc
-			#
-
-			tantque i <= 10
-				repeter {
-					ecrire i ;
-					i := i + 1 ;
-				}
-			```
-		- ######pour
-			```
-			entier i ;
-
-			#
-			# pour idf dans Expression .. Expression repeter
-			#
-
-			pour i dans 1 .. 5
-				repeter {
-					ecrire i ;
-				}
-			```
+		```
+			| tantque Expression repeter Bloc | pour idf dans Expression .. Expression repeter |
+		```
 
 	- ######Expression
 		```
