@@ -1,25 +1,25 @@
-##PLIC
+##ComPLIC
 ```
     Copyright 2015 Renan Strauss
 
-    PLIC is free software: you can redistribute it and/or modify
+    ComPLIC is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    PLIC is distributed in the hope that it will be useful,
+    ComPLIC is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with PLIC.  If not, see <http://www.gnu.org/licenses/>
+    along with ComPLIC.  If not, see <http://www.gnu.org/licenses/>
 
 ```
 
 Le langage PLIC est un langage qui se veut très simple (cf fonctionnalités actuelles).
 Ce compilateur transforme le code PLIC en code assembleur MIPS.
-La version de base de ce compilateur a été réalisée à l'IUT Nancy-Charlemagne, en 2ème année de DUT Informatique, dans le module Compilation.
+La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 2ème année de DUT Informatique, dans le module Compilation.
 
 ##Fonctionnalités
 
