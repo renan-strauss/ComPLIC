@@ -1,5 +1,9 @@
 package plic.analyse;
 
+import plic.analyse.expressions.ConstanteEntiere;
+import plic.analyse.expressions.Variable;
+import plic.analyse.expressions.binaires.Somme;
+
 public class MIPSUtils extends ASMUtils {
 	private static final int DECALAGE = -4;
 
@@ -59,6 +63,56 @@ public class MIPSUtils extends ASMUtils {
 
 		
 		return condition.toString();
+	}
+
+	@Override
+	public String genererTantQue(Expression e, Bloc rep) {
+		int id = etiquetteId++;
+
+		StringBuffer boucle = new StringBuffer(e.generer());
+		boucle.append("\nLOOP" + id + ":\n");
+		boucle.append("\tbne $v0, 1, EXIT" + id + "\n");
+		boucle.append(rep.generer());
+		boucle.append(e.generer());
+		boucle.append("\n\tj LOOP" + id + "\n");
+		boucle.append("\nEXIT" + id + ":\n");
+
+		return boucle.toString();
+	}
+
+	@Override
+	public String genererPour(Variable v, Expression deb, Expression fin, Bloc rep) {
+		int id = etiquetteId++;
+
+		/**
+		 * On initialise v a la valeur de deb
+		*/
+		int vPtr = TableSymboles.getInstance().get(v.getIdf()).getAddr();
+		String init = this.genererAffectation(deb, vPtr);
+
+		StringBuffer pour = new StringBuffer(init);
+		// on empile la valeur de v avant le debut de la boucle
+		pour.append(this.genererEmpiler());
+		pour.append("\nLOOP" + id + ":\n");
+		// on recupere la valeur de fin
+		pour.append(fin.generer());
+		// on depile la valeur de v
+		pour.append(this.genererDepiler());
+		// on met $v0 a 1 ssi v <= fin
+		pour.append("\tsle $v0, $t2, $v0\n");
+		// si $v0 est a 1, on continue, sinon on sort
+		pour.append("\tbne $v0, 1, EXIT" + id + "\n");
+		// le bloc a repeter
+		pour.append(rep.generer());
+		// incrementation de v
+		pour.append(this.genererAffectation(new Somme(v, new ConstanteEntiere(1)), vPtr));
+		// puis on empile de nouveau v
+		pour.append(this.genererEmpiler());
+		// fin de la boucle
+		pour.append("\tj LOOP" + id + "\n");
+		pour.append("EXIT" + id + ":\n");
+
+		return pour.toString();
 	}
 
 	/**
@@ -133,6 +187,7 @@ public class MIPSUtils extends ASMUtils {
 		return "\tsw $v0, 0($sp)\n\taddi $sp, $sp, -4\n";
 	}
 
+	// FIXME : 4 devrait etre calcule theoriquement
 	@Override
 	public String genererDepiler() {
 		return "\tlw $t2, 4($sp)\n\taddi $sp, $sp, 4\n";

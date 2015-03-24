@@ -9,7 +9,7 @@ import plic.erreurs.ErreurSemantique;
  * Cette classe représente un bloc,
  * qui est une liste d'instructions
 */
-public class Bloc extends ArrayList<Instruction> implements ArbreAbstrait, Instruction {
+public class Bloc extends ArrayList<Instruction> implements Instruction {
 	/**
 	 * Analyse semantique
 	*/

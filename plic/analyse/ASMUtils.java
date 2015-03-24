@@ -1,5 +1,7 @@
 package plic.analyse;
 
+import plic.analyse.expressions.Variable;
+
 /**
  * @author Renan Strauss
  * Un generateur de code assembleur
@@ -42,6 +44,8 @@ public abstract class ASMUtils {
 	public abstract String genererSuperieurOuEgal();
 
 	public abstract String genererCondition(Expression e, Bloc then, Bloc othw);
+	public abstract String genererTantQue(Expression e, Bloc rep);
+	public abstract String genererPour(Variable v, Expression deb, Expression fin, Bloc rep);
 
 	public static ASMUtils getInstance() {
 		/**

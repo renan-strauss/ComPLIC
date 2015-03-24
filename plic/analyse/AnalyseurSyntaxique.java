@@ -221,6 +221,18 @@ public class AnalyseurSyntaxique {
 				*/
 				instr = this.analyseCondition();
 				break;
+			case Lexique.TANT_QUE:
+				/**
+				 * C'est une boucle while
+				*/
+				instr = this.analyseTantQue();
+				break;
+			case Lexique.POUR:
+				/**
+				 * C'est une boucle for
+				*/
+				instr = this.analysePour();
+				break;
 			default:
 				/**
 				 * C'est une affectation
@@ -232,6 +244,34 @@ public class AnalyseurSyntaxique {
 		this.check(Lexique.SEMICOLON);
 
 		return instr;
+	}
+
+	private TantQue analyseTantQue() throws ErreurSyntaxique {
+		this.check(Lexique.TANT_QUE);
+		this.check("(");
+		Expression expr = this.analyseExpression();
+		this.check(")");
+		this.check(Lexique.REPETER);
+		Bloc blk = this.analyseBloc();
+
+		return new TantQue(expr, blk);
+	}
+
+	private Pour analysePour() throws ErreurSyntaxique {
+		this.check(Lexique.POUR);
+		Variable v = new Variable(this.analyseIdentificateur());
+
+		this.check(Lexique.DANS);
+
+		Expression deb = this.analyseExpression();
+		this.check("..");
+		Expression fin = this.analyseExpression();
+
+		this.check(Lexique.REPETER);
+
+		Bloc blk = this.analyseBloc();
+
+		return new Pour(v, deb, fin, blk);
 	}
 
 	private Condition analyseCondition() throws ErreurSyntaxique {

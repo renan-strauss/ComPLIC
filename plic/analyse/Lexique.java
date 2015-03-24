@@ -12,6 +12,12 @@ public class Lexique {
 	public static final String SINON = "sinon";
 	public static final String FINSI = "finsi";
 
+	public static final String TANT_QUE = "tantque";
+	public static final String REPETER = "repeter";
+
+	public static final String POUR = "pour";
+	public static final String DANS = "dans";
+
 	public static final String TYPE_ENTIER = "entier";
 	public static final String TYPE_BOOLEEN = "booleen";
 	public static final String[] TYPES = {
