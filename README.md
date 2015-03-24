@@ -29,22 +29,27 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 		```
 			{ Declaration+ Instruction+ }
 		```
+
 	- ######Declaration
 		```
 			Type idf+ ;
 		```
+
 	- ######Instruction
 		```
 			| Affichage | Affectation | Condition | Iteration |
 		```
+
 	- ######Affichage
 		```
 			ecrire idf ;
 		```
+
 	- ######Affectation
 		```
 			idf := Expression ;
 		```
+
 	- ######Condition
 		```
 		entier a ;
@@ -57,6 +62,7 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 				ecrire a ;
 			}
 		```
+
 	- ######Iteration
 		- ######tantque
 			```
@@ -83,31 +89,36 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 		```
 			| Terme | Terme { +|- Terme }+ |
 		```
+
 	- ######Terme
 		```
 			| Facteur | Facteur { *|/ FACTEUR }+ |
 		```
+
 	- ######Facteur
 		```
 			| idf | n e Z | ( Expression ) |
 		```
+
 	- ######Opérateurs logiques
 		```
 			| et | ou |
 		```
+
 	- ######Opérateurs de comparaison
 		```
 			| = | < | > | <= | >= | != |
 		```
+
 	- ######Opérateurs arithmétiques
 		```
 			| + | - | * | / |
 		```
+
 	- ###### Opérandes
 		```
 			| vrai | faux | n e Z | idf | ( Expression ) |
 		```
-
 
 Le fichier Test0.plic reprend toutes ces fonctionnalités.
 Les autres fichiers testent differentes fonctionnalites : tantque, pour, boucles imbriquees, etc.
