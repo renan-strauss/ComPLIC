@@ -21,26 +21,31 @@ Le langage PLIC est un langage qui se veut très simple (cf fonctionnalités act
 Ce compilateur transforme le code PLIC en code assembleur MIPS.
 La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 2ème année de DUT Informatique, dans le module Compilation.
 
-##Fonctionnalités
+##Description du langage
 
 * Commentaires Ruby/Python style : \#
-* Déclaration de variables (de type entier ou booleen)
-* Affectation (valeur, variable, ou expression)
-	- verification de la compatibilite des types
-* Expressions
-	- multiplication, addition, division, difference entre entiers
-	- operations et/ou entre booleens ou expressions booleennes
-	- comparaisons (=, <, >, <=, >=, !=) entre entiers
-* Instructions
-	- ######programme
+* Grammaire
+	- ######Bloc
 		```
-		programme MonProgrammeDeTest {
-			# Declarations
-
-			# Instructions
-		}
+			{ Declaration+ Instruction+ }
 		```
-	- ######si
+	- ######Declaration
+		```
+			Type idf+ ;
+		```
+	- ######Instruction
+		```
+			| Affichage | Affectation | Condition | Iteration |
+		```
+	- ######Affichage
+		```
+			ecrire idf ;
+		```
+	- ######Affectation
+		```
+			idf := Expression ;
+		```
+	- ######Condition
 		```
 		entier a ;
 		a := 5 ;
@@ -51,6 +56,54 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 			} sinon {
 				ecrire a ;
 			}
+		```
+	- ######Iteration
+		- #########tantque
+			```
+			entier i ;
+			i := 1 ;
+
+			tantque i <= 10
+				repeter {
+					ecrire i ;
+					i := i + 1 ;
+				}
+			```
+		- #########pour
+			```
+			entier i ;
+
+			pour i dans 1 .. 5
+				repeter {
+					ecrire i ;
+				}
+			```
+	- ######Expression
+		```
+			| Terme | Terme { +|- Terme }+ |
+		```
+	- ######Terme
+		```
+			| Facteur | Facteur { *|/ FACTEUR }+ |
+		```
+	- ######Facteur
+		```
+			| idf | n e Z | ( Expression ) |
+	- ######Opérateurs logiques
+		```
+			| et | ou |
+		```
+	- ######Opérateurs de comparaison
+		```
+			| = | < | > | <= | >= | != |
+		```
+	- ######Opérateurs arithmétiques
+		```
+			| + | - | * | / |
+		```
+	- ###### Opérandes
+		```
+			| vrai | faux | n e Z | idf | ( Expression ) |
 		```
 
 
