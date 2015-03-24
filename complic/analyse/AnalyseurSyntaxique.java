@@ -251,9 +251,7 @@ public class AnalyseurSyntaxique {
 
 	private TantQue analyseTantQue() throws ErreurSyntaxique {
 		this.check(Lexique.TANT_QUE);
-		this.check("(");
 		Expression expr = this.analyseExpression();
-		this.check(")");
 		this.check(Lexique.REPETER);
 		Bloc blk = this.analyseBloc();
 
@@ -279,10 +277,8 @@ public class AnalyseurSyntaxique {
 
 	private Condition analyseCondition() throws ErreurSyntaxique {
 		this.check(Lexique.SI);
-		this.check("(");
+		
 		Expression expr = this.analyseExpression();
-		this.check(")");
-
 
 		this.check(Lexique.ALORS);
 
