@@ -76,14 +76,13 @@ public class Main {
 		BufferedReader output = getOutput(p);
 
 		String ligne = "";
-        while((ligne = output.readLine()) != null) {
-            System.out.println(ligne);
-        }
-
-        p.waitFor();
+		while((ligne = output.readLine()) != null) {
+			System.out.println(ligne);
+		}
+		p.waitFor();
 	}
 
     private static BufferedReader getOutput(Process p) {
-        return new BufferedReader(new InputStreamReader(p.getInputStream()));
+			return new BufferedReader(new InputStreamReader(p.getInputStream()));
     }
 }

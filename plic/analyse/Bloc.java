@@ -9,11 +9,10 @@ import plic.erreurs.ErreurSemantique;
  * Cette classe représente un bloc,
  * qui est une liste d'instructions
 */
-public class Bloc extends ArrayList<Instruction> implements Instruction {
+public class Bloc extends ArrayList<Instruction> {
 	/**
 	 * Analyse semantique
 	*/
-	@Override
 	public void verifier() throws ErreurSemantique {
 		/**
 		 * Chaque instruction verifie
@@ -28,7 +27,6 @@ public class Bloc extends ArrayList<Instruction> implements Instruction {
 	 * Generation du code assembleur
 	 * MIPS
 	*/
-	@Override
 	public String generer() {
 		StringBuffer asm = new StringBuffer();
 		ASMUtils utils = ASMUtils.getInstance();
