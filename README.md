@@ -27,7 +27,7 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 * Grammaire
 	- ######Bloc
 		```
-			{ Declaration+ Instruction+ }
+			{ Declaration* Instruction+ }
 		```
 
 	- ######Types
@@ -60,6 +60,11 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 		entier a ;
 		a := 5 ;
 
+		#
+		# si Expression alors Bloc sinon Bloc |
+		# si Expression alors Bloc
+		#
+
 		si ( a * 2 ) = 10
 			alors {
 				ecrire a * 2 ;
@@ -74,6 +79,10 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 			entier i ;
 			i := 1 ;
 
+			#
+			# tantque Expression repeter Bloc
+			#
+
 			tantque i <= 10
 				repeter {
 					ecrire i ;
@@ -83,6 +92,10 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 		- ######pour
 			```
 			entier i ;
+
+			#
+			# pour idf dans Expression .. Expression repeter
+			#
 
 			pour i dans 1 .. 5
 				repeter {
