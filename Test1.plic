@@ -9,7 +9,7 @@ programme Test1 {
 		ecrire a ;
 	} sinon {
 		ecrire b ;
-	} finsi ;
+	}
 
 	c := 10 ;
 	d := 10 ;
@@ -21,6 +21,6 @@ programme Test1 {
 			ecrire d ;
 		} sinon {
 			ecrire a ;
-		} finsi ;
-	} finsi ;
+		}
+	}
 }

@@ -1,4 +1,4 @@
-programme Test2 {
+programme Test4 {
 	entier x y ;
 
 	x := 1 ;
@@ -8,7 +8,7 @@ programme Test2 {
 	}
 
 	y := 2 ;
-	si ( y >= 2 ) alors {
+	si ( y <= 2 ) alors {
 		tantque ( y < 100 ) repeter {
 			ecrire y ;
 			y := y + 1 ;

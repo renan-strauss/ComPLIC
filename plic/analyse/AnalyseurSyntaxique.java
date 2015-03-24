@@ -216,7 +216,9 @@ public class AnalyseurSyntaxique {
 			 	* C'est ecrire
 				*/
 				instr = this.analyseEcrire();
-			break;
+				// Skip ;
+				this.check(Lexique.SEMICOLON);
+				break;
 			case Lexique.SI:
 				/**
 				 * C'est une conditionnelle
@@ -240,10 +242,9 @@ public class AnalyseurSyntaxique {
 				 * C'est une affectation
 				*/
 				instr = this.analyseAffectation();
+				// Skip ;
+				this.check(Lexique.SEMICOLON);
 		}
-
-		// Skip ;
-		this.check(Lexique.SEMICOLON);
 
 		return instr;
 	}
@@ -291,8 +292,6 @@ public class AnalyseurSyntaxique {
 			this.unite = this.lex.next();
 			othw = this.analyseBloc();
 		}
-
-		this.check(Lexique.FINSI);
 
 		return new Condition(expr, then, othw);
 	}

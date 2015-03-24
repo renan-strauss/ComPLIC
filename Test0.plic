@@ -18,24 +18,17 @@ programme Test0 {
 	F := 10 * 6 - 7 + ( 4 * ( 3 + 2 ) ) ;
 
 	si ( J ou faux ) alors {
-		booleen G ;
-		G := vrai ;
-
-		si ( G et vrai ) alors {
-			booleen Z ;
+		si ( A = 10 ) alors {
 			ecrire B ;
 		} sinon {
-			entier Y ;
 			ecrire D ;
-		} finsi ;
+		}
 
 		ecrire A ;
 		ecrire F ;
 	} sinon {
-		entier H ;
-
 		ecrire B ;
-	} finsi ;
+	}
 
 	
 	/*ecrire C ;

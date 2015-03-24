@@ -3,9 +3,9 @@ programme Test3 {
 
 	pour a dans 1 .. 10 repeter {
 		ecrire a ;
-	} ;
+	}
 
 	pour b dans ( 1 + 3 ) .. ( 4 + 5 ) repeter {
 		ecrire b ;
-	} ;
+	}
 }

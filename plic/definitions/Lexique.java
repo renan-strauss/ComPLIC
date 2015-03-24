@@ -10,7 +10,6 @@ public class Lexique {
 	public static final String SI = "si";
 	public static final String ALORS = "alors";
 	public static final String SINON = "sinon";
-	public static final String FINSI = "finsi";
 
 	public static final String TANT_QUE = "tantque";
 	public static final String REPETER = "repeter";
@@ -55,7 +54,7 @@ public class Lexique {
 		 * Les mots cles
 		*/
 		PROGRAMME, DEBUT_BLOC, FIN_BLOC,
-		ECRIRE, SI, ALORS, SINON, FINSI,
+		ECRIRE, SI, ALORS, SINON,
 
 		/**
 		 * Les operateurs
