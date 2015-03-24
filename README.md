@@ -32,11 +32,27 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 	- operations et/ou entre booleens ou expressions booleennes
 	- comparaisons (=, <, >, <=, >=, !=) entre entiers
 * Instructions
-	- programme nom { ... } OBLIGATOIRE
-	- ecrire idf : affiche la valeur en memoire de idf avec un retour charriot
-	- si ( condition ) alors { ... } sinon { ... }
-	- tantque ( condition ) repeter { ... }
-	- pour idf dans expression .. expression repeter { ... }
+	- ######programme
+		```
+		programme MonProgrammeDeTest {
+			# Declarations
+
+			# Instructions
+		}
+		```
+	- ######si
+		```
+		entier a ;
+		a := 5 ;
+
+		si ( a * 2 ) = 10
+			alors {
+				ecrire a * 2 ;
+			} sinon {
+				ecrire a ;
+			}
+		```
+
 
 Le fichier Test0.plic reprend toutes ces fonctionnalités.
 Les autres fichiers testent differentes fonctionnalites : tantque, pour, boucles imbriquees, etc.
@@ -58,9 +74,9 @@ java plic.Main FichierSource.plic
 
 ```
 # # # # # # # # # # # # # # # # # # # #
-#																			#
-# Exemple de programme ecrit en PLIC	#
-#																			#
+#                                     #
+# Exemple de programme ecrit en PLIC  #
+#                                     #
 # # # # # # # # # # # # # # # # # # # #
 
 programme Exemple {
