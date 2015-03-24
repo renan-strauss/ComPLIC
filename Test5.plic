@@ -1,0 +1,10 @@
+programme Test5 {
+	entier i j k ;
+
+	pour i dans 1 .. 2 repeter {
+		pour j dans 1 .. 5 repeter {
+			k := i + j ;
+			ecrire k ;
+		}
+	}
+}

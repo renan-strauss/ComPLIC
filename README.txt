@@ -8,13 +8,14 @@ Fonctionnalités:
 		- operations et/ou entre booleens ou expressions booleennes
 		- comparaisons (=, <, >, <=, >=, !=) entre entiers
 	* Instructions =>
-		- programme <nomProg> { ... }
+		- programme <nom> { ... } OBLIGATOIRE
 		- ecrire <idf> : affiche la valeur en memoire de <idf> avec un retour charriot
-		- si ( <cond> ) alors { ... } sinon { ... } finsi ;
-			* avec <cond> expression booleenne
+		- si ( <condition> ) alors { ... } sinon { ... }
+		- tantque ( <condition> ) repeter { ... }
+		- pour <idf> dans <expression> .. <expression> repeter { ... }
 
 Le fichier Test0.plic reprend toutes ces fonctionnalités.
-Le dossier TestsPlic0/ contient les tests ecrits pour la version 0 de PLIC.
+Les autres fichiers testent differentes fonctionnalites : tantque, pour, boucles imbriquees, etc.
 
 Avec mars.jar dans le repertoire, on peut dire au compilateur de lancer directement le programme MIPS avec Mars:
 
