@@ -1,8 +1,8 @@
 package plic.analyse.expressions.binaires;
 
-import plic.analyse.AnalyseurLexical;
 import plic.analyse.ASMUtils;
 import plic.analyse.Expression;
+import plic.analyse.Lexique;
 import plic.analyse.expressions.Binaire;
 
 import plic.erreurs.ErreurSemantique;
@@ -24,23 +24,23 @@ public class Comparaison extends Binaire {
 	public String getType() throws ErreurSemantique {
 		super.getType();
 
-		return AnalyseurLexical.TYPE_BOOLEEN;
+		return Lexique.TYPE_BOOLEEN;
 	}
 
 	@Override
 	public String genererOperation() {
 		switch(this.operateur) {
-			case AnalyseurLexical.OP_EQ:
+			case Lexique.OP_EQ:
 				return ASMUtils.getInstance().genererEgal();
-			case AnalyseurLexical.OP_NEQ:
+			case Lexique.OP_NEQ:
 				return ASMUtils.getInstance().genererNonEgal();
-			case AnalyseurLexical.OP_LT:
+			case Lexique.OP_LT:
 				return ASMUtils.getInstance().genererInferieur();
-			case AnalyseurLexical.OP_GT:
+			case Lexique.OP_GT:
 				return ASMUtils.getInstance().genererSuperieur();
-			case AnalyseurLexical.OP_LOET:
+			case Lexique.OP_LOET:
 				return ASMUtils.getInstance().genererInferieurOuEgal();
-			case AnalyseurLexical.OP_GOET:
+			case Lexique.OP_GOET:
 				return ASMUtils.getInstance().genererSuperieurOuEgal();
 			default:
 				// Ca ne devrait jamais arriver

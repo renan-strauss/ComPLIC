@@ -44,7 +44,7 @@ public class AnalyseurSyntaxique {
 	}
 
 	private Bloc analyseProgramme() throws ErreurSyntaxique {
-		this.check(AnalyseurLexical.PROGRAMME);
+		this.check(Lexique.PROGRAMME);
 		this.unite = this.lex.next();
 
 		return this.analyseBloc();
@@ -56,15 +56,15 @@ public class AnalyseurSyntaxique {
 		/**
 		 * Debut du bloc
 		*/
-		this.check(AnalyseurLexical.DEBUT_BLOC);
+		this.check(Lexique.DEBUT_BLOC);
 		do {
 			this.analyseDeclaration();
 		} while(this.estUnType(this.unite));
 		do {
 			blk.add(this.analyseInstruction());
-		} while(!this.unite.equals(AnalyseurLexical.FIN_BLOC));
+		} while(!this.unite.equals(Lexique.FIN_BLOC));
 
-		this.check(AnalyseurLexical.FIN_BLOC);
+		this.check(Lexique.FIN_BLOC);
 		/**
 		 * Fin du bloc, on le retourne
 		*/
@@ -75,13 +75,13 @@ public class AnalyseurSyntaxique {
 	private void analyseDeclaration() throws ErreurSyntaxique {
 		String idf;
 		String type = this.analyseType();
-		while(!this.unite.equals(AnalyseurLexical.SEMICOLON)) {
+		while(!this.unite.equals(Lexique.SEMICOLON)) {
 			idf = this.analyseIdentificateur();
 			TableSymboles.getInstance().put(idf, type);
 		}
 
 		// Skip ;
-		this.check(AnalyseurLexical.SEMICOLON);
+		this.check(Lexique.SEMICOLON);
 	}
 
 	private Ecrire analyseEcrire() throws ErreurSyntaxique {
@@ -97,29 +97,29 @@ public class AnalyseurSyntaxique {
 	private Expression analyseExpression() throws ErreurSyntaxique {
 		Expression expr = this.analyseTerme();
 		while(this.lex.estUnOperateur(this.unite) && 
-			  !(this.unite.equals(AnalyseurLexical.OP_MULT) || this.unite.equals(AnalyseurLexical.OP_DIV))) {
+			  !(this.unite.equals(Lexique.OP_MULT) || this.unite.equals(Lexique.OP_DIV))) {
 			switch(this.unite) {
-				case AnalyseurLexical.OP_ADD:
+				case Lexique.OP_ADD:
 					this.unite = this.lex.next();
 					expr = new Somme(expr, this.analyseTerme());
 					break;
-				case AnalyseurLexical.OP_SUB:
+				case Lexique.OP_SUB:
 					this.unite = this.lex.next();
 					expr = new Difference(expr, this.analyseTerme());
 					break;
-				case AnalyseurLexical.OP_AND:
+				case Lexique.OP_AND:
 					this.unite = this.lex.next();
 					expr = new Et(expr, this.analyseTerme());
 					break;
-				case AnalyseurLexical.OP_OR:
+				case Lexique.OP_OR:
 					this.unite = this.lex.next();
 					expr = new Ou(expr, this.analyseTerme());
 					break;
-				case AnalyseurLexical.OP_EQ:
-				case AnalyseurLexical.OP_LT:
-				case AnalyseurLexical.OP_GT:
-				case AnalyseurLexical.OP_LOET:
-				case AnalyseurLexical.OP_GOET:
+				case Lexique.OP_EQ:
+				case Lexique.OP_LT:
+				case Lexique.OP_GT:
+				case Lexique.OP_LOET:
+				case Lexique.OP_GOET:
 					String op = this.unite;
 					this.unite = this.lex.next();
 					expr = new Comparaison(expr, op, this.analyseTerme());
@@ -136,29 +136,29 @@ public class AnalyseurSyntaxique {
 	private Expression analyseTerme() throws ErreurSyntaxique {
 		Expression expr = this.analyseFacteur();
 		while(this.lex.estUnOperateur(this.unite) && 
-			  !(this.unite.equals(AnalyseurLexical.OP_ADD) || this.unite.equals(AnalyseurLexical.OP_SUB))) {
+			  !(this.unite.equals(Lexique.OP_ADD) || this.unite.equals(Lexique.OP_SUB))) {
 			switch(this.unite) {
-				case AnalyseurLexical.OP_MULT:
+				case Lexique.OP_MULT:
 					this.unite = this.lex.next();
 					expr = new Produit(expr, this.analyseFacteur());
 					break;
-				case AnalyseurLexical.OP_DIV:
+				case Lexique.OP_DIV:
 					this.unite = this.lex.next();
 					expr = new Quotient(expr, this.analyseFacteur());
 					break;
-				case AnalyseurLexical.OP_AND:
+				case Lexique.OP_AND:
 					this.unite = this.lex.next();
 					expr = new Et(expr, this.analyseFacteur());
 					break;
-				case AnalyseurLexical.OP_OR:
+				case Lexique.OP_OR:
 					this.unite = this.lex.next();
 					expr = new Ou(expr, this.analyseFacteur());
 					break;
-				case AnalyseurLexical.OP_EQ:
-				case AnalyseurLexical.OP_LT:
-				case AnalyseurLexical.OP_GT:
-				case AnalyseurLexical.OP_LOET:
-				case AnalyseurLexical.OP_GOET:
+				case Lexique.OP_EQ:
+				case Lexique.OP_LT:
+				case Lexique.OP_GT:
+				case Lexique.OP_LOET:
+				case Lexique.OP_GOET:
 					String op = this.unite;
 					this.unite = this.lex.next();
 					expr = new Comparaison(expr, op, this.analyseTerme());
@@ -191,7 +191,7 @@ public class AnalyseurSyntaxique {
 
 	private Affectation analyseAffectation() throws ErreurSyntaxique {
 		String idf = this.analyseIdentificateur();
-		this.check(AnalyseurLexical.OP_ASSIGN);
+		this.check(Lexique.OP_ASSIGN);
 
 		return new Affectation(idf, this.analyseExpression());
 	}
@@ -199,13 +199,13 @@ public class AnalyseurSyntaxique {
 	private Instruction analyseInstruction() throws ErreurSyntaxique {
 		Instruction instr = null;
 		switch(this.unite) {
-			case AnalyseurLexical.ECRIRE:
+			case Lexique.ECRIRE:
 				/**
 			 	* C'est ecrire
 				*/
 				instr = this.analyseEcrire();
 			break;
-			case AnalyseurLexical.SI:
+			case Lexique.SI:
 				/**
 				 * C'est une conditionnelle
 				*/
@@ -219,28 +219,28 @@ public class AnalyseurSyntaxique {
 		}
 
 		// Skip ;
-		this.check(AnalyseurLexical.SEMICOLON);
+		this.check(Lexique.SEMICOLON);
 
 		return instr;
 	}
 
 	private Condition analyseCondition() throws ErreurSyntaxique {
-		this.check(AnalyseurLexical.SI);
+		this.check(Lexique.SI);
 		this.check("(");
 		Expression expr = this.analyseExpression();
 		this.check(")");
 
 
-		this.check(AnalyseurLexical.ALORS);
+		this.check(Lexique.ALORS);
 
 		Bloc then = this.analyseBloc();
 		Bloc othw = null;
-		if(this.unite.equals(AnalyseurLexical.SINON)) {
+		if(this.unite.equals(Lexique.SINON)) {
 			this.unite = this.lex.next();
 			othw = this.analyseBloc();
 		}
 
-		this.check(AnalyseurLexical.FINSI);
+		this.check(Lexique.FINSI);
 
 		return new Condition(expr, then, othw);
 	}
@@ -304,6 +304,6 @@ public class AnalyseurSyntaxique {
 	}
 
 	private boolean estUnType(String word) {
-		return Arrays.asList(AnalyseurLexical.TYPES).contains(word);
+		return Arrays.asList(Lexique.TYPES).contains(word);
 	}
 }

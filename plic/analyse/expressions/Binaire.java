@@ -1,8 +1,8 @@
 package plic.analyse.expressions;
 
-import plic.analyse.AnalyseurLexical;
 import plic.analyse.ASMUtils;
 import plic.analyse.Expression;
+import plic.analyse.Lexique;
 
 import plic.erreurs.ErreurSemantique;
 
@@ -45,6 +45,6 @@ public abstract class Binaire implements Expression {
 		}
 
 		// Par defaut
-		return AnalyseurLexical.TYPE_ENTIER;
+		return Lexique.TYPE_ENTIER;
 	}
 }

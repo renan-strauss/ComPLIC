@@ -1,8 +1,8 @@
 package plic.analyse.expressions.binaires;
 
-import plic.analyse.AnalyseurLexical;
 import plic.analyse.ASMUtils;
 import plic.analyse.Expression;
+import plic.analyse.Lexique;
 import plic.analyse.expressions.Binaire;
 
 import plic.erreurs.ErreurSemantique;
@@ -18,11 +18,11 @@ public class Et extends Binaire {
 
 	@Override
 	public String getType() throws ErreurSemantique {
-		if(!(this.filsGauche.getType().equals(AnalyseurLexical.TYPE_BOOLEEN)
-		  && this.filsDroit.getType().equals(AnalyseurLexical.TYPE_BOOLEEN))) {
+		if(!(this.filsGauche.getType().equals(Lexique.TYPE_BOOLEEN)
+		  && this.filsDroit.getType().equals(Lexique.TYPE_BOOLEEN))) {
 			throw new ErreurSemantique("AND : booleans expected");
 		}
-		return AnalyseurLexical.TYPE_BOOLEEN;
+		return Lexique.TYPE_BOOLEEN;
 	}
 
 	@Override
