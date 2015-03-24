@@ -104,8 +104,8 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 		```
 			| et | ou |
 		```
-
-	- ######Opérateurs de comparaison
+	
+	-	######Opérateurs de comparaison
 		```
 			| = | < | > | <= | >= | != |
 		```
