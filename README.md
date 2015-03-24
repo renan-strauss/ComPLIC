@@ -74,28 +74,30 @@ programme Exemple {
 	/**
 	 * N'affiche rien
 	*/
-	si ( a > b ) alors {
-		ecrire a ;
-	}
+	si ( a > b )
+		alors {
+			ecrire a ;
+		}
 
 	/**
 	 * Affiche les 10 premiers entiers positifs
 	*/
-	pour c dans 1 .. 10 repeter {
-		ecrire c ;
-	}
+	pour c dans 1 .. 10
+		repeter {
+			ecrire c ;
+		}
 
 	/**
 	 * En affiche 10 de plus
 	*/
 	d := ( a = b ) ou vrai ;
-	si ( d et vrai ) alors
-	{
-		tantque ( c <= 20 ) repeter
-		{
-			ecrire c ;
-			c := c + 1 ;
+	si ( d et vrai )
+		alors {
+			tantque ( c <= 20 )
+				repeter {
+					ecrire c ;
+					c := c + 1 ;
+				}
 		}
-	}
 }
 ```
