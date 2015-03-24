@@ -1,8 +1,4 @@
 programme Test0 {
-	/* 
-	 * Des entiers
-	 * pour rigoler
-	*/
 
 	entier A B C D ;
 	entier E F ;
@@ -17,8 +13,10 @@ programme Test0 {
 	E := ( A + D ) / 2 ;
 	F := 10 * 6 - 7 + ( 4 * ( 3 + 2 ) ) ;
 
-	si ( J ou faux ) alors {
-		si ( A = 10 ) alors {
+	si ( J ou faux )
+	alors {
+		si ( A = 10 )
+		alors {
 			ecrire B ;
 		} sinon {
 			ecrire D ;
@@ -29,9 +27,4 @@ programme Test0 {
 	} sinon {
 		ecrire B ;
 	}
-
-	
-	/*ecrire C ;
-	ecrire D ;
-	ecrire E ;*/
 }

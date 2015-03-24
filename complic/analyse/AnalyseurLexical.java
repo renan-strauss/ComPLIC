@@ -46,23 +46,11 @@ public class AnalyseurLexical {
 	*/
 	public String next() {
 		String next = this.scan.next();
-		
-		/*
-		 * Commentaires multi-lignes
-		*/
-		if(next.startsWith("/*")) {
-			while(!next.endsWith("*/")) {
-				if(this.hasNext()) {
-					next = this.scan.next();
-				} else {
-					break;
-				}
-			}
-		}
+
 		/**
-		 * Commentaires en une seule ligne
+		 * Une ligne de commentaire
 		*/
-		else if(next.startsWith("//")) {
+		if(next.startsWith("#")) {
 			this.scan.nextLine();
 		}
 		/**

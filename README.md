@@ -23,7 +23,7 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 
 ##Fonctionnalités
 
-* Commentaires sur une ( // ) ou plusieurs ( /* ... */ ) lignes
+* Commentaires Ruby/Python style : \#
 * Déclaration de variables (de type entier ou booleen)
 * Affectation (valeur, variable, ou expression)
 	- verification de la compatibilite des types
@@ -57,44 +57,45 @@ java plic.Main FichierSource.plic
 ##Exemple de code PLIC
 
 ```
-/**
- *
- * Exemple de programme ecrit en PLIC
- *
-*/
+#
+# Exemple de programme ecrit en PLIC
+#
 programme Exemple {
-	/* Declarations */
+
+	#
+	# Declarations
+	#	
+
 	entier a b c ;
 	booleen d ;
 
-	/* Instructions */
+	#
+	# Instructions
+	#
+
 	a := 4 ;
 	b := 5 ;
 
-	/**
-	 * N'affiche rien
-	*/
+	# N'affiche rien
 	si ( a > b )
 		alors {
 			ecrire a ;
 		}
 
-	/**
-	 * Affiche les 10 premiers entiers positifs
-	*/
+	# Affiche les 10 premiers entiers positifs
 	pour c dans 1 .. 10
 		repeter {
 			ecrire c ;
 		}
 
-	/**
-	 * En affiche 10 de plus
-	*/
+	# En affiche 10 de plus
 	d := ( a = b ) ou vrai ;
 	si ( d et vrai )
-		alors {
+		alors 
+		{
 			tantque ( c <= 20 )
-				repeter {
+				repeter
+				{
 					ecrire c ;
 					c := c + 1 ;
 				}

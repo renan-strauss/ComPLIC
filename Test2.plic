@@ -2,10 +2,11 @@ programme Test2 {
 	entier x y ;
 
 	x := 1 ;
-	tantque ( x <= 10 ) repeter {
-		ecrire x ;
-		x := x + 1 ;
-	}
+	tantque ( x <= 10 )
+		repeter {
+			ecrire x ;
+			x := x + 1 ;
+		}
 
 	y := 2 ;
 	si ( y >= 2 ) alors {

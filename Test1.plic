@@ -1,26 +1,44 @@
-programme Test1 {
-	/* Declarations */
-	entier a b c d ;
+#
+# Exemple de programme ecrit en PLIC
+#
+programme Exemple {
 
-	/* Instructions */
+	#
+	# Declarations
+	#	
+
+	entier a b c ;
+	booleen d ;
+
+	#
+	# Instructions
+	#
+
 	a := 4 ;
 	b := 5 ;
-	si ( a > b ) alors {
-		ecrire a ;
-	} sinon {
-		ecrire b ;
-	}
 
-	c := 10 ;
-	d := 10 ;
-	si ( c <= d ) alors {
-		entier e ;
-
-		e := ( c * d + 10 ) / 11 ;
-		si  ( ( e >= c ) et ( ( e - 1 + 1 ) = d ) ) alors {
-			ecrire d ;
-		} sinon {
+	# N'affiche rien
+	si ( a > b )
+		alors {
 			ecrire a ;
 		}
-	}
+
+	# Affiche les 10 premiers entiers positifs
+	pour c dans 1 .. 10
+		repeter {
+			ecrire c ;
+		}
+
+	# En affiche 10 de plus
+	d := ( a = b ) ou vrai ;
+	si ( d et vrai )
+		alors 
+		{
+			tantque ( c <= 20 )
+				repeter
+				{
+					ecrire c ;
+					c := c + 1 ;
+				}
+		}
 }
