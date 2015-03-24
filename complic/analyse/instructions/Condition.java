@@ -24,7 +24,7 @@ public class Condition implements Instruction {
 	@Override
 	public void verifier() throws ErreurSemantique {
 		if(!this.expr.getType().equals(Types.BOOLEEN)) {
-			throw new ErreurSemantique("Boolean expected");
+			throw new ErreurSemantique("Condition expected Expression of type 'booleen'");
 		}
 		this.then.verifier();
 		if(this.otherwise != null) {

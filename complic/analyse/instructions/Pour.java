@@ -35,7 +35,7 @@ public class Pour implements Instruction {
 	@Override
 	public void verifier() throws ErreurSemantique {
 		if(!this.debut.getType().equals(Types.ENTIER) || !this.fin.getType().equals(Types.ENTIER)) {
-			throw new ErreurSemantique("pour : bornes entieres attendues");
+			throw new ErreurSemantique("'pour' expected type 'entier'");
 		}
 	}
 }

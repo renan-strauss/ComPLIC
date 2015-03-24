@@ -21,7 +21,7 @@ public class Variable implements Expression {
 	public String getType() throws ErreurSemantique {
 		TableSymboles sym = TableSymboles.getInstance();
 		if(!sym.hasKey(this.idf)) {
-			throw new ErreurSemantique("Identifiant inconnu :" + this.idf);
+			throw new ErreurSemantique("Unknown idf : '" + this.idf + "'");
 		}
 
 		return sym.get(this.idf).getType();

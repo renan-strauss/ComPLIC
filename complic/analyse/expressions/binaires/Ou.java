@@ -21,7 +21,7 @@ public class Ou extends Binaire {
 	public String getType() throws ErreurSemantique {
 		if(!(this.filsGauche.getType().equals(Types.BOOLEEN)
 		  && this.filsDroit.getType().equals(Types.BOOLEEN))) {
-			throw new ErreurSemantique("AND : booleans expected");
+			throw new ErreurSemantique("'ou' expected type 'booleen'");
 		}
 		return Types.BOOLEEN;
 	}

@@ -36,10 +36,8 @@ public class AnalyseurSyntaxique {
 		this.unite = this.lex.next();
 		Bloc blk = this.analyseProgramme();
 
-		if(lex.hasNext()) {
-			throw new ErreurSyntaxique("Le fichier ne se termine pas correctement");
-		} else {
-			//System.out.println("Analyse syntaxique reussie !");
+		if(this.lex.hasNext()) {
+			throw new ErreurSyntaxique("'" + nomFichier + "' is malformed (expected EOF, got '" + this.lex.next() + "')");
 		}
 
 		return blk;
@@ -277,7 +275,7 @@ public class AnalyseurSyntaxique {
 
 	private Condition analyseCondition() throws ErreurSyntaxique {
 		this.check(Lexique.SI);
-		
+
 		Expression expr = this.analyseExpression();
 
 		this.check(Lexique.ALORS);
@@ -298,7 +296,7 @@ public class AnalyseurSyntaxique {
 			val = this.unite;
 			this.unite = this.lex.next();
 		} else {
-			throw new ErreurSyntaxique("Constante booleenne invalide : " + this.unite);
+			throw new ErreurSyntaxique("Not a boolean : '" + this.unite + "'");
 		}
 
 		return val;
@@ -310,7 +308,7 @@ public class AnalyseurSyntaxique {
 			idf = this.unite;
 			this.unite = this.lex.next();
 		} else {
-			throw new ErreurSyntaxique("Identificateur inconnu : " + this.unite);
+			throw new ErreurSyntaxique("Unknown idf : '" + this.unite + "'");
 		}
 
 		return idf;
@@ -322,7 +320,7 @@ public class AnalyseurSyntaxique {
 			type = this.unite;
 			this.unite = this.lex.next();
 		} else {
-			throw new ErreurSyntaxique("Type inconnu : " + this.unite);
+			throw new ErreurSyntaxique("Unknown type : '" + this.unite + "'");
 		}
 
 		return type;
@@ -334,7 +332,7 @@ public class AnalyseurSyntaxique {
 			val = Integer.parseInt(this.unite);
 			this.unite = this.lex.next();
 		} else {
-			throw new ErreurSyntaxique("Valeur incompatible : " + this.unite);
+			throw new ErreurSyntaxique("Not an integer : '" + this.unite + "'");
 		}
 
 		return val;
@@ -346,7 +344,7 @@ public class AnalyseurSyntaxique {
 				this.unite = this.lex.next();
 			}
 		} else {
-			throw new ErreurSyntaxique("Expected : " + word + ", got :" + this.unite);
+			throw new ErreurSyntaxique("Got      : '" + this.unite + "'\nExpected : '" + word + "'");
 		}
 	}
 

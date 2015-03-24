@@ -29,7 +29,7 @@ public class Affectation implements Instruction {
 	@Override
 	public void verifier() {
 		if(!TableSymboles.getInstance().hasKey(this.lhs)) {
-			throw new ErreurSemantique("Symbole inexistant : " + this.lhs);
+			throw new ErreurSemantique("Unknown symbol : '" + this.lhs + "'");
 		}
 
 		/**
@@ -38,7 +38,7 @@ public class Affectation implements Instruction {
 		String lhsType = this.getType(this.lhs);
 		String rhsType = this.rhs.getType();
 		if(!lhsType.equals(rhsType)) {
-			throw new ErreurSemantique("Types incompatibles : " + lhsType + " et " + rhsType);
+			throw new ErreurSemantique("Incompatible types : '" + lhsType + "' and '" + rhsType + "'");
 		}
 	}
 

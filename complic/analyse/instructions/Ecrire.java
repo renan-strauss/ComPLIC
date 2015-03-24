@@ -26,7 +26,7 @@ public class Ecrire implements Instruction {
 	@Override
 	public void verifier() throws ErreurSemantique {
 		if(!TableSymboles.getInstance().hasKey(this.idf)) {
-			throw new ErreurSemantique("Identificateur inexistant : " + this.idf);
+			throw new ErreurSemantique("Unknown idf : '" + this.idf + "'");
 		}
 	}
 

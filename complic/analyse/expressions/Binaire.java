@@ -42,7 +42,7 @@ public abstract class Binaire implements Expression {
 		String fgType = this.filsGauche.getType();
 		String fdType = this.filsDroit.getType();
 		if(!fgType.equals(fdType)) {
-			throw new ErreurSemantique("Types incompatibles : " + fgType + " et " + fdType);
+			throw new ErreurSemantique("Incompatible types : '" + fgType + "'' and '" + fdType + "'");
 		}
 
 		// Par defaut
