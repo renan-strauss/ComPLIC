@@ -58,7 +58,7 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 			}
 		```
 	- ######Iteration
-		- #########tantque
+		- ######tantque
 			```
 			entier i ;
 			i := 1 ;
@@ -69,7 +69,7 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 					i := i + 1 ;
 				}
 			```
-		- #########pour
+		- ######pour
 			```
 			entier i ;
 
@@ -78,6 +78,7 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 					ecrire i ;
 				}
 			```
+
 	- ######Expression
 		```
 			| Terme | Terme { +|- Terme }+ |
@@ -89,6 +90,7 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 	- ######Facteur
 		```
 			| idf | n e Z | ( Expression ) |
+		```
 	- ######Opérateurs logiques
 		```
 			| et | ou |
