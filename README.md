@@ -42,14 +42,60 @@ Le fichier Test0.plic reprend toutes ces fonctionnalités.
 Les autres fichiers testent differentes fonctionnalites : tantque, pour, boucles imbriquees, etc.
 
 Pour lancer le code MIPS généré, téléchargez [le simulateur MARS](http://courses.missouristate.edu/KenVollmar/MARS/).
-Avec mars.jar dans le repertoire, on peut dire au compilateur de lancer directement le programme MIPS avec Mars:
+Avec mars.jar dans le repertoire, on peut dire au compilateur de lancer directement le programme MIPS avec MARS:
 
-```bash
+```
 java plic.Main -exec FichierSource.plic
 ```
 
 Sinon, pour generer out.mips:
 
-```bash
+```
 java plic.Main FichierSource.plic
+```
+
+##Exemple de code PLIC
+
+```
+/**
+ *
+ * Exemple de programme ecrit en PLIC
+ *
+*/
+programme Exemple {
+	/* Declarations */
+	entier a b c ;
+	booleen d ;
+
+	/* Instructions */
+	a := 4 ;
+	b := 5 ;
+
+	/**
+	 * N'affiche rien
+	*/
+	si ( a > b ) alors {
+		ecrire a ;
+	}
+
+	/**
+	 * Affiche les 10 premiers entiers positifs
+	*/
+	pour c dans 1 .. 10 repeter {
+		ecrire c ;
+	}
+
+	/**
+	 * En affiche 10 de plus
+	*/
+	d := ( a = b ) ou vrai ;
+	si ( d et vrai ) alors
+	{
+		tantque ( c <= 20 ) repeter
+		{
+			ecrire c ;
+			c := c + 1 ;
+		}
+	}
+}
 ```
