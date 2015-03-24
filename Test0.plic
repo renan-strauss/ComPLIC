@@ -1,0 +1,44 @@
+programme Test0 {
+	/* 
+	 * Des entiers
+	 * pour rigoler
+	*/
+
+	entier A B C D ;
+	entier E F ;
+	booleen J ;
+
+	J := vrai ;
+
+	A := 10 * 5 - 40 ;
+	B := 1 + 2 ;
+	C := 2 * 4 + 5 ;
+	D := 10 / 2 + 10 / 2 ;
+	E := ( A + D ) / 2 ;
+	F := 10 * 6 - 7 + ( 4 * ( 3 + 2 ) ) ;
+
+	si ( J ou faux ) alors {
+		booleen G ;
+		G := vrai ;
+
+		si ( G et vrai ) alors {
+			booleen Z ;
+			ecrire B ;
+		} sinon {
+			entier Y ;
+			ecrire D ;
+		} finsi ;
+
+		ecrire A ;
+		ecrire F ;
+	} sinon {
+		entier H ;
+
+		ecrire B ;
+	} finsi ;
+
+	
+	/*ecrire C ;
+	ecrire D ;
+	ecrire E ;*/
+}

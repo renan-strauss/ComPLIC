@@ -1,0 +1,10 @@
+programme Test1 {
+	booleen a d ;
+	entier b c ;
+
+	a := vrai ;
+	b := 1 ;
+
+	// Erreur semantique : types incomptibles
+	c := a + b ;
+}
