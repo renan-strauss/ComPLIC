@@ -1,28 +1,29 @@
-#PLIC
+##PLIC
 Le langage PLIC est un langage qui se veut très simple (cf fonctionnalités actuelles).
 Ce compilateur transforme le code PLIC en code assembleur MIPS.
 La version de base de ce compilateur a été réalisée à l'IUT Nancy-Charlemagne, en 2ème année de DUT Informatique, dans le module Compilation.
 
-#Fonctionnalités
+##Fonctionnalités
 
 * Commentaires sur une ( // ) ou plusieurs ( /* ... */ ) lignes
 * Déclaration de variables (de type entier ou booleen)
-* Affectation (valeur, variable, ou expression) =>
+* Affectation (valeur, variable, ou expression)
 	- verification de la compatibilite des types
-* Expressions =>
-		- multiplication, addition, division, difference entre entiers
-		- operations et/ou entre booleens ou expressions booleennes
-		- comparaisons (=, <, >, <=, >=, !=) entre entiers
-* Instructions =>
-		- programme <nom> { ... } OBLIGATOIRE
-		- ecrire <idf> : affiche la valeur en memoire de <idf> avec un retour charriot
-		- si ( <condition> ) alors { ... } sinon { ... }
-		- tantque ( <condition> ) repeter { ... }
-		- pour <idf> dans <expression> .. <expression> repeter { ... }
+* Expressions
+	- multiplication, addition, division, difference entre entiers
+	- operations et/ou entre booleens ou expressions booleennes
+	- comparaisons (=, <, >, <=, >=, !=) entre entiers
+* Instructions
+	- programme <nom> { ... } OBLIGATOIRE
+	- ecrire <idf> : affiche la valeur en memoire de <idf> avec un retour charriot
+	- si ( <condition> ) alors { ... } sinon { ... }
+	- tantque ( <condition> ) repeter { ... }
+	- pour <idf> dans <expression> .. <expression> repeter { ... }
 
 Le fichier Test0.plic reprend toutes ces fonctionnalités.
 Les autres fichiers testent differentes fonctionnalites : tantque, pour, boucles imbriquees, etc.
 
+Pour lancer le code MIPS généré, téléchargez [le simulateur MARS](http://courses.missouristate.edu/KenVollmar/MARS/).
 Avec mars.jar dans le repertoire, on peut dire au compilateur de lancer directement le programme MIPS avec Mars:
 
 ```bash
