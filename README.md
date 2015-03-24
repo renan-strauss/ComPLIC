@@ -30,6 +30,11 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 			{ Declaration+ Instruction+ }
 		```
 
+	- ######Types
+		```
+			| entier | booleen |
+		```
+
 	- ######Declaration
 		```
 			Type idf+ ;
