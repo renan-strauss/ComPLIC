@@ -14,11 +14,11 @@ La version de base de ce compilateur a été réalisée à l'IUT Nancy-Charlemag
 	- operations et/ou entre booleens ou expressions booleennes
 	- comparaisons (=, <, >, <=, >=, !=) entre entiers
 * Instructions
-	- programme <nom> { ... } OBLIGATOIRE
-	- ecrire <idf> : affiche la valeur en memoire de <idf> avec un retour charriot
-	- si ( <condition> ) alors { ... } sinon { ... }
-	- tantque ( <condition> ) repeter { ... }
-	- pour <idf> dans <expression> .. <expression> repeter { ... }
+	- programme nom { ... } OBLIGATOIRE
+	- ecrire idf : affiche la valeur en memoire de idf avec un retour charriot
+	- si ( condition ) alors { ... } sinon { ... }
+	- tantque ( condition ) repeter { ... }
+	- pour idf dans expression .. expression repeter { ... }
 
 Le fichier Test0.plic reprend toutes ces fonctionnalités.
 Les autres fichiers testent differentes fonctionnalites : tantque, pour, boucles imbriquees, etc.
