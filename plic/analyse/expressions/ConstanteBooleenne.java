@@ -2,7 +2,9 @@ package plic.analyse.expressions;
 
 import plic.analyse.ASMUtils;
 import plic.analyse.Expression;
-import plic.analyse.Lexique;
+
+import plic.definitions.Lexique;
+import plic.definitions.Types;
 
 import plic.erreurs.ErreurSemantique;
 
@@ -15,7 +17,7 @@ public class ConstanteBooleenne implements Expression {
 
 	@Override
 	public String getType() throws ErreurSemantique {
-		return Lexique.TYPE_BOOLEEN;
+		return Types.BOOLEEN;
 	}
 
 	public static ConstanteBooleenne getByValue(String val) {

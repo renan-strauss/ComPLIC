@@ -1,12 +1,14 @@
 package plic.analyse;
 
-import plic.erreurs.FichierInexistant;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import plic.definitions.Lexique;
+
+import plic.erreurs.FichierInexistant;
 
 /**
  * @author Renan Strauss

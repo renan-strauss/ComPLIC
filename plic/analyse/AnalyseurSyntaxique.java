@@ -7,6 +7,8 @@ import plic.analyse.expressions.*;
 import plic.analyse.expressions.binaires.*;
 import plic.analyse.instructions.*;
 
+import plic.definitions.Lexique;
+
 import plic.erreurs.ErreurSyntaxique;
 import plic.erreurs.FichierInexistant;
 

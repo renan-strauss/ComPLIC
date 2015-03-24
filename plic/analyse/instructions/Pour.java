@@ -6,6 +6,8 @@ import plic.analyse.Expression;
 import plic.analyse.Instruction;
 import plic.analyse.expressions.Variable;
 
+import plic.definitions.Types;
+
 import plic.erreurs.ErreurSemantique;
 
 /**
@@ -32,6 +34,8 @@ public class Pour implements Instruction {
 
 	@Override
 	public void verifier() throws ErreurSemantique {
-
+		if(!this.debut.getType().equals(Types.ENTIER) || !this.fin.getType().equals(Types.ENTIER)) {
+			throw new ErreurSemantique("pour : bornes entieres attendues");
+		}
 	}
 }

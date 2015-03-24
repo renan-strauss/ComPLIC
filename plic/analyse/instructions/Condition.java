@@ -4,7 +4,9 @@ import plic.analyse.ASMUtils;
 import plic.analyse.Bloc;
 import plic.analyse.Expression;
 import plic.analyse.Instruction;
-import plic.analyse.Lexique;
+
+import plic.definitions.Lexique;
+import plic.definitions.Types;
 
 import plic.erreurs.ErreurSemantique;
 
@@ -21,7 +23,7 @@ public class Condition implements Instruction {
 
 	@Override
 	public void verifier() throws ErreurSemantique {
-		if(!this.expr.getType().equals(Lexique.TYPE_BOOLEEN)) {
+		if(!this.expr.getType().equals(Types.BOOLEEN)) {
 			throw new ErreurSemantique("Boolean expected");
 		}
 		this.then.verifier();

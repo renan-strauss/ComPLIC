@@ -2,8 +2,10 @@ package plic.analyse.expressions.binaires;
 
 import plic.analyse.ASMUtils;
 import plic.analyse.Expression;
-import plic.analyse.Lexique;
 import plic.analyse.expressions.Binaire;
+
+import plic.definitions.Lexique;
+import plic.definitions.Types;
 
 import plic.erreurs.ErreurSemantique;
 
@@ -24,7 +26,7 @@ public class Comparaison extends Binaire {
 	public String getType() throws ErreurSemantique {
 		super.getType();
 
-		return Lexique.TYPE_BOOLEEN;
+		return Types.BOOLEEN;
 	}
 
 	@Override

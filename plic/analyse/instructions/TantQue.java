@@ -5,6 +5,8 @@ import plic.analyse.Bloc;
 import plic.analyse.Expression;
 import plic.analyse.Instruction;
 
+import plic.definitions.Types;
+
 import plic.erreurs.ErreurSemantique;
 
 /**
@@ -27,5 +29,8 @@ public class TantQue implements Instruction {
 
 	@Override
 	public void verifier() throws ErreurSemantique {
+		if(!this.condition.getType().equals(Types.BOOLEEN)) {
+			throw new ErreurSemantique("tant que : valeur booleenne attendue");
+		}
 	}
 }

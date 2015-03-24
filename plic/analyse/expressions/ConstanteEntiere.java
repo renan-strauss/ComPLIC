@@ -2,7 +2,8 @@ package plic.analyse.expressions;
 
 import plic.analyse.ASMUtils;
 import plic.analyse.Expression;
-import plic.analyse.Lexique;
+
+import plic.definitions.Types;
 
 import plic.erreurs.ErreurSemantique;
 
@@ -19,7 +20,7 @@ public class ConstanteEntiere implements Expression {
 
 	@Override
 	public String getType() throws ErreurSemantique {
-		return Lexique.TYPE_ENTIER;
+		return Types.ENTIER;
 	}
 
 	@Override

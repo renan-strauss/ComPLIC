@@ -1,4 +1,4 @@
-package plic.analyse;
+package plic.definitions;
 
 public class Lexique {
 	public static final String PROGRAMME  = "programme";
@@ -18,10 +18,8 @@ public class Lexique {
 	public static final String POUR = "pour";
 	public static final String DANS = "dans";
 
-	public static final String TYPE_ENTIER = "entier";
-	public static final String TYPE_BOOLEEN = "booleen";
 	public static final String[] TYPES = {
-		TYPE_ENTIER, TYPE_BOOLEEN
+		Types.ENTIER, Types.BOOLEEN
 	};
 
 	public static final String VRAI = "vrai";
@@ -68,7 +66,7 @@ public class Lexique {
 		/**
 		 * Les types
 		*/
-		TYPE_ENTIER, TYPE_BOOLEEN,
+		Types.ENTIER, Types.BOOLEEN,
 		// Pour les booleens
 		VRAI, FAUX
 	};
