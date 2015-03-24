@@ -34,6 +34,13 @@ public abstract class ASMUtils {
 	public abstract String genererEt();
 	public abstract String genererOu();
 
+	public abstract String genererEgal();
+	public abstract String genererNonEgal();
+	public abstract String genererInferieur();
+	public abstract String genererSuperieur();
+	public abstract String genererInferieurOuEgal();
+	public abstract String genererSuperieurOuEgal();
+
 	public abstract String genererCondition(Expression e, Bloc then, Bloc othw);
 
 	public static ASMUtils getInstance() {

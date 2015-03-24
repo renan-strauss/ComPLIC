@@ -1,5 +1,6 @@
 package plic.analyse.expressions;
 
+import plic.analyse.AnalyseurLexical;
 import plic.analyse.ASMUtils;
 import plic.analyse.Expression;
 
@@ -43,6 +44,7 @@ public abstract class Binaire implements Expression {
 			throw new ErreurSemantique("Types incompatibles : " + fgType + " et " + fdType);
 		}
 
-		return fgType;
+		// Par defaut
+		return AnalyseurLexical.TYPE_ENTIER;
 	}
 }

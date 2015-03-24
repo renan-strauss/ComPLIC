@@ -40,14 +40,29 @@ public class AnalyseurLexical {
 	public static final String FAUX = "faux";
 
 	public static final String OP_ASSIGN = ":=";
+
 	public static final String OP_ADD = "+";
 	public static final String OP_SUB = "-";
 	public static final String OP_DIV = "/";
 	public static final String OP_MULT = "*";
+
 	public static final String OP_AND = "et";
 	public static final String OP_OR = "ou";
 
+	public static final String OP_EQ = "=";
+	public static final String OP_NEQ = "!=";
+	public static final String OP_LT = "<";
+	public static final String OP_GT = ">";
+	public static final String OP_LOET = "<=";
+	public static final String OP_GOET = ">=";
+
 	public static final String SEMICOLON = ";";
+
+	public static final String[] OPERATEURS = {
+		OP_ADD, OP_SUB, OP_DIV, OP_MULT,
+		OP_AND, OP_OR, OP_EQ, OP_NEQ, OP_LT,
+		OP_GT, OP_LOET, OP_GOET
+	};
 
 	public static final String[] MOTS_CLES = {
 		/**
@@ -60,7 +75,7 @@ public class AnalyseurLexical {
 		 * Les operateurs
 		*/
 		OP_ASSIGN, OP_ADD, OP_SUB, OP_DIV, OP_MULT,
-		OP_AND, OP_OR,
+		OP_AND, OP_OR, OP_EQ,
 
 		/**
 		 * Les types
@@ -151,5 +166,9 @@ public class AnalyseurLexical {
 
 	public boolean estUneConstanteBooleenne(String word) {
 		return word.equals(VRAI) || word.equals(FAUX);
+	}
+
+	public boolean estUnOperateur(String word) {
+		return Arrays.asList(OPERATEURS).contains(word);
 	}
 }

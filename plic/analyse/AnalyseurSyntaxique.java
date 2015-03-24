@@ -96,24 +96,33 @@ public class AnalyseurSyntaxique {
 	*/
 	private Expression analyseExpression() throws ErreurSyntaxique {
 		Expression expr = this.analyseTerme();
-		while((this.unite.equals(AnalyseurLexical.OP_ADD) || this.unite.equals(AnalyseurLexical.OP_SUB))
-		   || (this.unite.equals(AnalyseurLexical.OP_AND)|| this.unite.equals(AnalyseurLexical.OP_OR))) {
+		while(this.lex.estUnOperateur(this.unite) && 
+			  !(this.unite.equals(AnalyseurLexical.OP_MULT) || this.unite.equals(AnalyseurLexical.OP_DIV))) {
 			switch(this.unite) {
 				case AnalyseurLexical.OP_ADD:
-				this.unite = this.lex.next();
+					this.unite = this.lex.next();
 					expr = new Somme(expr, this.analyseTerme());
 					break;
 				case AnalyseurLexical.OP_SUB:
-				this.unite = this.lex.next();
+					this.unite = this.lex.next();
 					expr = new Difference(expr, this.analyseTerme());
 					break;
 				case AnalyseurLexical.OP_AND:
-				this.unite = this.lex.next();
+					this.unite = this.lex.next();
 					expr = new Et(expr, this.analyseTerme());
 					break;
 				case AnalyseurLexical.OP_OR:
-				this.unite = this.lex.next();
+					this.unite = this.lex.next();
 					expr = new Ou(expr, this.analyseTerme());
+					break;
+				case AnalyseurLexical.OP_EQ:
+				case AnalyseurLexical.OP_LT:
+				case AnalyseurLexical.OP_GT:
+				case AnalyseurLexical.OP_LOET:
+				case AnalyseurLexical.OP_GOET:
+					String op = this.unite;
+					this.unite = this.lex.next();
+					expr = new Comparaison(expr, op, this.analyseTerme());
 					break;
 			}
 		}
@@ -126,24 +135,33 @@ public class AnalyseurSyntaxique {
 	*/
 	private Expression analyseTerme() throws ErreurSyntaxique {
 		Expression expr = this.analyseFacteur();
-		while((this.unite.equals(AnalyseurLexical.OP_MULT) || this.unite.equals(AnalyseurLexical.OP_DIV))
-		   || (this.unite.equals(AnalyseurLexical.OP_AND)|| this.unite.equals(AnalyseurLexical.OP_OR))) {
+		while(this.lex.estUnOperateur(this.unite) && 
+			  !(this.unite.equals(AnalyseurLexical.OP_ADD) || this.unite.equals(AnalyseurLexical.OP_SUB))) {
 			switch(this.unite) {
 				case AnalyseurLexical.OP_MULT:
-				this.unite = this.lex.next();
+					this.unite = this.lex.next();
 					expr = new Produit(expr, this.analyseFacteur());
 					break;
 				case AnalyseurLexical.OP_DIV:
-				this.unite = this.lex.next();
+					this.unite = this.lex.next();
 					expr = new Quotient(expr, this.analyseFacteur());
 					break;
 				case AnalyseurLexical.OP_AND:
-				this.unite = this.lex.next();
+					this.unite = this.lex.next();
 					expr = new Et(expr, this.analyseFacteur());
 					break;
 				case AnalyseurLexical.OP_OR:
-				this.unite = this.lex.next();
+					this.unite = this.lex.next();
 					expr = new Ou(expr, this.analyseFacteur());
+					break;
+				case AnalyseurLexical.OP_EQ:
+				case AnalyseurLexical.OP_LT:
+				case AnalyseurLexical.OP_GT:
+				case AnalyseurLexical.OP_LOET:
+				case AnalyseurLexical.OP_GOET:
+					String op = this.unite;
+					this.unite = this.lex.next();
+					expr = new Comparaison(expr, op, this.analyseTerme());
 					break;
 			}
 		}

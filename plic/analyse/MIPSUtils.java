@@ -63,12 +63,44 @@ public class MIPSUtils extends ASMUtils {
 		return condition.toString();
 	}
 
+	@Override
 	public String genererEt() {
 		return "\tand $v0, $t2, $v0\n";
 	}
 
+	@Override
 	public String genererOu() {
 		return "\tor $v0, $t2, $v0\n";
+	}
+
+	@Override
+	public String genererEgal() {
+		return "\tseq $v0, $t2, $v0\n";
+	}
+
+	@Override
+	public String genererNonEgal() {
+		return "\tsne $v0, $t2, $v0\n";
+	}
+
+	@Override
+	public String genererInferieur() {
+		return "\tslt $v0, $t2, $v0\n";
+	}
+
+	@Override
+	public String genererSuperieur() {
+		return "\tsgt $v0, $t2, $v0\n";
+	}
+
+	@Override
+	public String genererInferieurOuEgal() {
+		return "\tsle $v0, $t2, $v0\n";
+	}
+
+	@Override
+	public String genererSuperieurOuEgal() {
+		return "\tsge $v0, $t2, $v0\n";
 	}
 
 	/**
