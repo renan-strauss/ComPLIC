@@ -52,41 +52,53 @@ public class AnalyseurSyntaxique {
 		return this.analyseBloc(false);
 	}
 
-	private Bloc analyseBloc(boolean inline) throws ErreurSyntaxique {
+	private Bloc analyseBloc(boolean allowInline) throws ErreurSyntaxique {
 		Bloc blk = new Bloc();
 
-		if(!inline && this.unite.equals(Lexique.DEBUT_BLOC)) {
-			/**
-			 * Debut du bloc
-			*/
-			this.check(Lexique.DEBUT_BLOC);
-			/**
-			 * Il est contraignant de devoir refaire des declarations
-			 * dans les blocs conditionnels ou iteratifs par exemple.
-			 * Pour l'instant, on choisit donc d'autoriser l'absence
-			 * de déclartion.
-			 *
-			 * Attention !
-			 * Les déclarations doivent toujours se faire avant toute
-			 * instruction, sinon une erreur syntaxique sera levée
-			*/
-			while(this.estUnType(this.unite)) {
-				this.analyseDeclaration();
-			}
-			do {
-				blk.add(this.analyseInstruction());
-			} while(!this.unite.equals(Lexique.FIN_BLOC));
+		switch(this.unite) {
+			case Lexique.DEBUT_BLOC:
+				/**
+				 * Debut du bloc
+				*/
+				this.check(Lexique.DEBUT_BLOC);
+				/**
+				 * Il est contraignant de devoir refaire des declarations
+				 * dans les blocs conditionnels ou iteratifs par exemple.
+				 * Pour l'instant, on choisit donc d'autoriser l'absence
+				 * de déclartion.
+				 *
+				 * Attention !
+				 * Les déclarations doivent toujours se faire avant toute
+				 * instruction, sinon une erreur syntaxique sera levée
+				*/
+				while(this.estUnType(this.unite)) {
+					this.analyseDeclaration();
+				}
+				do {
+					blk.add(this.analyseInstruction());
+				} while(!this.unite.equals(Lexique.FIN_BLOC));
 
-			this.check(Lexique.FIN_BLOC);
-		} else {
-			/**
-			 * On autorise l'écriture du type
-			 * instr => blk ssi il n'y a qu'une
-			 * instruction dans blk
-			*/
-			this.check(Lexique.DEBUT_BLOC_INLINE);
-			
-			blk.add(this.analyseInstruction());
+				this.check(Lexique.FIN_BLOC);
+				break;
+			case Lexique.DEBUT_BLOC_INLINE:
+				/**
+				 * Pour programme par exemple,
+				 * le bloc inline n'est pas autorisé
+				*/
+				if(!allowInline) {
+					break;
+				}
+				/**
+				 * On autorise l'écriture du type
+				 * instr => blk ssi il n'y a qu'une
+				 * instruction dans blk
+				*/
+				this.check(Lexique.DEBUT_BLOC_INLINE);
+				
+				blk.add(this.analyseInstruction());
+				break;
+			default:
+				// Il y a un problème... what to do? FIXME
 		}
 		/**
 		 * Fin du bloc, on le retourne
