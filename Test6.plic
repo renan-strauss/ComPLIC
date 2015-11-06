@@ -1,0 +1,10 @@
+programme Test6 {
+	entier i j k ;
+
+	i := 0 ;
+	j := 1 ;
+	k := 2 ;
+
+	si i = 0 alors => j := j + k ;
+	pour i dans 1 .. 10 repeter => ecrire i ;
+}

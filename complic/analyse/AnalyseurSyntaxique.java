@@ -47,34 +47,47 @@ public class AnalyseurSyntaxique {
 		this.check(Lexique.PROGRAMME);
 		this.unite = this.lex.next();
 
-		return this.analyseBloc();
+		// la version inline des blocs n'est pas autorisée
+		// pour l'instruction programme
+		return this.analyseBloc(false);
 	}
 
-	private Bloc analyseBloc() throws ErreurSyntaxique {
+	private Bloc analyseBloc(boolean inline) throws ErreurSyntaxique {
 		Bloc blk = new Bloc();
 
-		/**
-		 * Debut du bloc
-		*/
-		this.check(Lexique.DEBUT_BLOC);
-		/**
-		 * Il est contraignant de devoir refaire des declarations
-		 * dans les blocs conditionnels ou iteratifs par exemple.
-		 * Pour l'instant, on choisit donc d'autoriser l'absence
-		 * de déclartion.
-		 *
-		 * Attention !
-		 * Les déclarations doivent toujours se faire avant toute
-		 * instruction, sinon une erreur syntaxique sera levée
-		*/
-		while(this.estUnType(this.unite)) {
-			this.analyseDeclaration();
-		}
-		do {
-			blk.add(this.analyseInstruction());
-		} while(!this.unite.equals(Lexique.FIN_BLOC));
+		if(!inline && this.unite.equals(Lexique.DEBUT_BLOC)) {
+			/**
+			 * Debut du bloc
+			*/
+			this.check(Lexique.DEBUT_BLOC);
+			/**
+			 * Il est contraignant de devoir refaire des declarations
+			 * dans les blocs conditionnels ou iteratifs par exemple.
+			 * Pour l'instant, on choisit donc d'autoriser l'absence
+			 * de déclartion.
+			 *
+			 * Attention !
+			 * Les déclarations doivent toujours se faire avant toute
+			 * instruction, sinon une erreur syntaxique sera levée
+			*/
+			while(this.estUnType(this.unite)) {
+				this.analyseDeclaration();
+			}
+			do {
+				blk.add(this.analyseInstruction());
+			} while(!this.unite.equals(Lexique.FIN_BLOC));
 
-		this.check(Lexique.FIN_BLOC);
+			this.check(Lexique.FIN_BLOC);
+		} else {
+			/**
+			 * On autorise l'écriture du type
+			 * instr => blk ssi il n'y a qu'une
+			 * instruction dans blk
+			*/
+			this.check(Lexique.DEBUT_BLOC_INLINE);
+			
+			blk.add(this.analyseInstruction());
+		}
 		/**
 		 * Fin du bloc, on le retourne
 		*/
@@ -251,7 +264,7 @@ public class AnalyseurSyntaxique {
 		this.check(Lexique.TANT_QUE);
 		Expression expr = this.analyseExpression();
 		this.check(Lexique.REPETER);
-		Bloc blk = this.analyseBloc();
+		Bloc blk = this.analyseBloc(true);
 
 		return new TantQue(expr, blk);
 	}
@@ -268,7 +281,7 @@ public class AnalyseurSyntaxique {
 
 		this.check(Lexique.REPETER);
 
-		Bloc blk = this.analyseBloc();
+		Bloc blk = this.analyseBloc(true);
 
 		return new Pour(v, deb, fin, blk);
 	}
@@ -280,11 +293,11 @@ public class AnalyseurSyntaxique {
 
 		this.check(Lexique.ALORS);
 
-		Bloc then = this.analyseBloc();
+		Bloc then = this.analyseBloc(true);
 		Bloc othw = null;
 		if(this.unite.equals(Lexique.SINON)) {
 			this.unite = this.lex.next();
-			othw = this.analyseBloc();
+			othw = this.analyseBloc(true);
 		}
 
 		return new Condition(expr, then, othw);
