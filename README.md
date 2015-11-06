@@ -27,7 +27,7 @@ La version de base de ComPLIC a été réalisée à l'IUT Nancy-Charlemagne, en 
 * Grammaire
 	- ######Bloc
 		```
-			{ Declaration* Instruction+ }
+			{ Declaration* Instruction+ } | => Instruction
 		```
 
 	- ######Types
@@ -151,9 +151,7 @@ programme Exemple {
 	# Affiche les 10 premiers entiers positifs
 
 	pour c dans 1 .. 10
-		repeter {
-			ecrire c ;
-		}
+		repeter => ecrire c ;
 
 	# En affiche 10 de plus
 

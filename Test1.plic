@@ -1,7 +1,7 @@
 # # # # # # # # # # # # # # # # # # # #
-#																			#
-# Exemple de programme ecrit en PLIC	#
-#																			#
+#                                     #
+# Exemple de programme ecrit en PLIC  #
+#                                     #
 # # # # # # # # # # # # # # # # # # # #
 
 programme Exemple {
@@ -23,16 +23,12 @@ programme Exemple {
 	# N'affiche rien
 
 	si a > b
-		alors {
-			ecrire a ;
-		}
+		alors => ecrire a ;
 
 	# Affiche les 10 premiers entiers positifs
 
 	pour c dans 1 .. 10
-		repeter {
-			ecrire c ;
-		}
+		repeter => ecrire c ;
 
 	# En affiche 10 de plus
 
