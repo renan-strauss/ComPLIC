@@ -52,6 +52,13 @@ public class AnalyseurSyntaxique {
 		return this.analyseBloc(false);
 	}
 
+	/**
+	 * Méthode de convénience
+	*/
+	private Bloc analyseBloc() throws ErreurSyntaxique {
+		return this.analyseBloc(true);
+	}
+
 	private Bloc analyseBloc(boolean allowInline) throws ErreurSyntaxique {
 		Bloc blk = new Bloc();
 
@@ -276,7 +283,7 @@ public class AnalyseurSyntaxique {
 		this.check(Lexique.TANT_QUE);
 		Expression expr = this.analyseExpression();
 		this.check(Lexique.REPETER);
-		Bloc blk = this.analyseBloc(true);
+		Bloc blk = this.analyseBloc();
 
 		return new TantQue(expr, blk);
 	}
@@ -293,7 +300,7 @@ public class AnalyseurSyntaxique {
 
 		this.check(Lexique.REPETER);
 
-		Bloc blk = this.analyseBloc(true);
+		Bloc blk = this.analyseBloc();
 
 		return new Pour(v, deb, fin, blk);
 	}
@@ -305,11 +312,11 @@ public class AnalyseurSyntaxique {
 
 		this.check(Lexique.ALORS);
 
-		Bloc then = this.analyseBloc(true);
+		Bloc then = this.analyseBloc();
 		Bloc othw = null;
 		if(this.unite.equals(Lexique.SINON)) {
 			this.unite = this.lex.next();
-			othw = this.analyseBloc(true);
+			othw = this.analyseBloc();
 		}
 
 		return new Condition(expr, then, othw);
